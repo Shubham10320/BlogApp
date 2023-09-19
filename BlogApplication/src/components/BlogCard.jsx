@@ -38,32 +38,20 @@ export default function BlogCard({
       console.log(error);
     }
   };
+
+
   return (
     <Card
-      sx={{
-        width: "40%",
-        margin: "auto",
-        mt: 2,
-        padding: 2,
-        boxShadow: "5px 5px 10px #ccc",
+      sx={{ mt: 5, boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
         ":hover:": {
           boxShadow: "10px 10px 20px #ccc",
         },
       }}
     >
-      {isUser && (
-        <Box display={"flex"}>
-          <IconButton onClick={handleEdit} sx={{ marginLeft: "auto" }}>
-            <ModeEditIcon color="info" />
-          </IconButton>
-          <IconButton onClick={handleDelete}>
-            <DeleteIcon color="error" />
-          </IconButton>
-        </Box>
-      )}
+      
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+          <Avatar sx={{ bgcolor: red[500]}} aria-label="recipe">
             {username}
           </Avatar>
         }
@@ -79,6 +67,16 @@ export default function BlogCard({
           Description : {description}
         </Typography>
       </CardContent>
+      {isUser && (
+        <Box display={"flex"} justifyContent={"flex-end"}>
+          <IconButton onClick={handleEdit}>
+            <ModeEditIcon color="info" />
+          </IconButton>
+          <IconButton onClick={handleDelete}>
+            <DeleteIcon color="error" />
+          </IconButton>
+        </Box>
+      )}
     </Card>
   );
 }

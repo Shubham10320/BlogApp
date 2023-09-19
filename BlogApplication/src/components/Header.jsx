@@ -13,13 +13,14 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../redux/store";
 import toast from "react-hot-toast";
+
 const Header = () => {
-  // global state
+  
   let isLogin = useSelector((state) => state.isLogin);
   isLogin = isLogin || localStorage.getItem("userId");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //state
+
   const [value, setValue] = useState();
 
   //logout
@@ -33,11 +34,14 @@ const Header = () => {
       console.log(error);
     }
   };
+
+
+
   return (
     <>
       <AppBar position="sticky">
-        <Toolbar>
-          <Typography variant="h4">My Blog APP</Typography>
+        <Toolbar sx={{bgcolor:'teal'}}>
+          <Typography variant="h5" fontStyle="italic">BlogApp</Typography>
           {isLogin && (
             <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
               <Tabs

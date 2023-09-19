@@ -4,13 +4,15 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import toast from "react-hot-toast";
 import axios from "axios";
 const Register = () => {
+
+
   const navigate = useNavigate();
-  //state
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
     password: "",
   });
+
 
   //handle input change
   const handleChange = (e) => {
@@ -19,6 +21,7 @@ const Register = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
 
   //form handle
   const handleSubmit = async (e) => {
@@ -37,6 +40,8 @@ const Register = () => {
       console.log(error);
     }
   };
+
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -61,6 +66,7 @@ const Register = () => {
             Register
           </Typography>
           <TextField
+            maxWidth={900}
             placeholder="name"
             value={inputs.name}
             onChange={handleChange}

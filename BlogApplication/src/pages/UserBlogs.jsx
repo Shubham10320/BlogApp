@@ -22,7 +22,7 @@ const UserBlogs = () => {
   }, []);
   console.log(blogs);
   return (
-    <div>
+    <div style={{ width:"90%",display:'grid', gridTemplateColumns:"repeat(4, 1fr)", gap:"40px", margin:"auto"}}>
       {blogs && blogs.length > 0 ? (
         blogs.map((blog) => (
           <BlogCard

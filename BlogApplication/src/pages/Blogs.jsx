@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BlogCard from "../components/BlogCard";
 const Blogs = () => {
+
+  
   const [blogs, setBlogs] = useState([]);
+
+
   //get blogs
   const getAllBlogs = async () => {
-    try {
+    try{
       const { data } = await axios.get("/api/v1/blog/all-blog");
-      if (data?.success) {
+      if(data?.success) {
         setBlogs(data?.blogs);
       }
     } catch (error) {
@@ -17,11 +21,14 @@ const Blogs = () => {
   useEffect(() => {
     getAllBlogs();
   }, []);
+
+
+
   return (
-    <div>
+    <div style={{ width:"90%",margin:"auto", display:"grid", gridTemplateColumns:"repeat(4, 1fr)", gap:"40px"}}>
       {blogs &&
         blogs.map((blog) => (
-          <BlogCard
+          <BlogCard 
             id={blog?._id}
             isUser={localStorage.getItem("userId") === blog?.user?._id}
             title={blog?.title}
